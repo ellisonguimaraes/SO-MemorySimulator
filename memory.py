@@ -440,15 +440,14 @@ m = Memory()
 
 
 m.show_memory()
-m.store_firstfit("ProcessoA", 16)
-m.show_memory()
-m.store_firstfit("ProcessoB", 8)
-m.show_memory()
-m.store_firstfit("ProcessoC", 8)
-m.show_memory()
-m.store_firstfit("ProcessoD", 2)
-m.show_memory()
-m.store_firstfit("ProcessoE", 4)
+m.store_firstfit("ProcessoA", 8)
+m.store_firstfit("ProcessoB", 4)
+m.store_firstfit("ProcessoC", 2)
+m.store_firstfit("ProcessoD", 16)
+m.store_firstfit("ProcessoE", 2)
+m.store_firstfit("ProcessoF", 16)
+m.store_firstfit("ProcessoG", 8)
+m.store_firstfit("ProcessoH", 16)
 m.show_memory()
 m.show_programs()
 m.show_memory_info()
@@ -483,17 +482,21 @@ while True:
 
         # Pede a opção de encaixe válida
         while True:
-            store_type = int(input("Encaixe: \n(1) Firstfit\n(2) Bestfit\n(3) Worstfit\nDigite o tipo: "))
+            store_type = int(input("Encaixe: \n(1) Firstfit\n(2) Nextfit\n(3) Bestfit\n(4) Worstfit\nDigite o tipo: "))
 
             if store_type == 1:
                 if m.store_firstfit(name, size):
                     print("Adicionado com sucesso!")
                 break
             elif store_type == 2:
-                if m.store_bestfit(name, size):
+                if m.store_nextfit(name, size):
                     print("Adicionado com sucesso!")
                 break
             elif store_type == 3:
+                if m.store_bestfit(name, size):
+                    print("Adicionado com sucesso!")
+                break
+            elif store_type == 4:
                 if m.store_worstfit(name, size):
                     print("Adicionado com sucesso!")
                 break
